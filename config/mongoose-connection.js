@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const dugr = require('debug')("development:mongoose");
+const dugr = require('debug')('development:mangoose');
 
-mongoose.connect(`${config.get("MONGODB_URI")}/Two_cups`)
+mongoose.connect(`mongodb://127.0.0.1:27017/Two_cups`)
 .then(function(){ 
      dugr("Database connected");
 })

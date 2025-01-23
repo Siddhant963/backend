@@ -1,13 +1,13 @@
-const mongoose = require('mongoosee');
+const mongoose = require('mongoose');
 const userSchema = mongoose.Schema(
      {
           name: String,
           email: String,
           password: String,
-          contact : number,
+          contact : Number,
           Orders : [],
           Address : String,
           cart : []
      }
 );
-module.exports = mongoose.model(user , userSchema);
+module.exports = mongoose.model('users' , userSchema);
