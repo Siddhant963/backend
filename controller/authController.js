@@ -48,7 +48,7 @@ module.exports.loginUser = async (req,res)=>{
           if(!isMatch) return res.status(400).send("Password is incorrect");
           let token = genrateToken(user);
           res.cookie("token", token);
-          res.json("login successfull");
+         res.status(200).json({msg: "login successfully" , token});
      })
 
 }

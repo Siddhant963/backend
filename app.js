@@ -1,22 +1,30 @@
 const express = require('express');
 const db = require("./config/mongoose-connection");
 const userRouter = require('./routes/usersRouter');
+const categoryRouter = require('./routes/Categoryroutes');
+const ProductRouter = require('./routes/ProductRouter');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
+
 
 app.use(cors());
 app.use(cors({ 
     origin: 'http://localhost:5173', // Allow requests from your frontend
     methods: 'GET, POST, PUT, DELETE', // Specify allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true 
 }))
 app.use(cookieParser());
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({extended:true}));
 app.use("/users" , userRouter);
-
+app.use("/category" , categoryRouter);
+app.use('/product', ProductRouter);
 
 
 app.get('/', (req, res) => {
