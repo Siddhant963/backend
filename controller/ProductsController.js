@@ -21,3 +21,25 @@ module.exports.addProduct = [
           }
      }
 ];
+
+module.exports.getProductbycategory = async (req, res) => {
+     try{
+          let {categoryId} = req.query;          
+          let products = await productModel.find({categoryId});   
+          res.send(products);
+          
+     }
+     catch(err){
+          console.log(err);
+     }
+};
+
+module.exports.getAllProduct = async (req, res) => {
+     try{
+          let products = await productModel.find();
+          res.send(products);
+     }
+     catch(err){
+          console.log(err);
+     }
+};

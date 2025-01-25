@@ -3,6 +3,7 @@ const db = require("./config/mongoose-connection");
 const userRouter = require('./routes/usersRouter');
 const categoryRouter = require('./routes/Categoryroutes');
 const ProductRouter = require('./routes/ProductRouter');
+const orderRouter = require('./routes/orderRouter');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const app = express();
@@ -25,6 +26,7 @@ app.use(express.urlencoded({extended:true}));
 app.use("/users" , userRouter);
 app.use("/category" , categoryRouter);
 app.use('/product', ProductRouter);
+app.use('/order', orderRouter);
 
 
 app.get('/', (req, res) => {
