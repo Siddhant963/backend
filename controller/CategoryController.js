@@ -30,3 +30,14 @@ module.exports.findAllCategory = async (req, res) => {
           dbgr(err);
      }
 }
+
+module.exports.deleteCategory = async (req,res)=>{ 
+     const {id} = req.query;
+     try {
+          let category = await categoryModel.findByIdAndDelete(id);
+          res.send(category);
+     } catch (err) {
+          console.log(err);
+     }
+
+}

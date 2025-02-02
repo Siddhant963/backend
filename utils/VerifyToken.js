@@ -6,7 +6,7 @@ module.exports.verifyToken = (token) =>{
           return decoded;
           
      } catch (error) {
-          return res.status(401).json({ message: "Token is not valid" });
+          return ({ message: "Token is not valid" });
      }
 
 }

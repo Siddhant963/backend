@@ -5,9 +5,12 @@ const userSchema = mongoose.Schema(
           email: String,
           password: String,
           contact : Number,
-          Orders : [],
-          Address : String,
-          cart : []
+          isadmin:{
+              type: Boolean,
+              default: false,
+          },
+          address : String,
+          
      }
 );
 module.exports = mongoose.model('users' , userSchema);

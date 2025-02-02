@@ -43,3 +43,16 @@ module.exports.getAllProduct = async (req, res) => {
           console.log(err);
      }
 };
+
+module.exports.deleteProduct = async (req,res)=>{ 
+   let {id} = req.query;
+     
+     
+     try {
+          let category = await productModel.findByIdAndDelete(id);
+          res.send(category);
+     } catch (err) {
+          console.log(err);
+     }
+
+}

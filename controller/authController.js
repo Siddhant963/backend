@@ -3,9 +3,10 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { genrateToken } = require("../utils/genrateToken");
+const { verifyToken } = require("../utils/verifyToken");
 module.exports.registerUser =  async(req, res)=>{
      try {
-          let { name, email, password, contact, Address } = req.body;
+          let { name, email, password, contact, address } = req.body;
           let user = await usermodel.findOne({ email });
           if (user) {
                return res.status(400).send("User already exists");
@@ -19,7 +20,7 @@ module.exports.registerUser =  async(req, res)=>{
                                    email,
                                    password: hash,
                                    contact,
-                                   Address,
+                                   address,
                               });
                               let token = genrateToken(user);
                               res.cookie("token", token);
@@ -47,9 +48,20 @@ module.exports.loginUser = async (req,res)=>{
           if(err) return res.status(500).send("Error");
           if(!isMatch) return res.status(400).send("Password is incorrect");
           let token = genrateToken(user);
+          isadmin = user.isadmin;
           res.cookie("token", token);
-         res.status(200).json({msg: "login successfully" , token});
+         res.status(200).json({msg: "login successfully" , token ,  isadmin});
      })
+
+}
+
+module.exports.verifytoken = (req,res) =>{
+     let token = req.cookies.token;
+     if(!token) return res.status(401).send("Unauthorized");
+     const data =verifyToken(token);
+   
+     
+     return res.status(200).json({ data});
 
 }
 
@@ -57,4 +69,15 @@ module.exports.logOut = (req,res)=>{
      res.clearCookie("token");
      res.send("Logged out successfully");
      
+}
+
+module.exports.getProfilebyEmail= async (req,res) => {
+     let {email} = req.query;
+     
+     let user = await usermodel.findOne({email});
+     if(!user){
+          return res.status(400).send("User not found");
+     }
+     res.json(user);
+
 }
