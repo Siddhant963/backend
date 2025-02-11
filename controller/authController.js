@@ -24,7 +24,7 @@ module.exports.registerUser =  async(req, res)=>{
                               });
                               let token = genrateToken(user);
                               res.cookie("token", token);
-                              console.log(token);
+                              // console.log(token);
                               res.send(user);
 
                          }

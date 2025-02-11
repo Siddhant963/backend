@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const config = require('config');
 const dugr = require('debug')('development:mangoose');
+const dotenv = require('dotenv');
+require('dotenv').config();
 
-mongoose.connect(`mongodb://127.0.0.1:27017/Two_cups`)
+
+mongoose.connect(`${process.env.MONGODB_URI}`)
 .then(function(){ 
      dugr("Database connected");
 })

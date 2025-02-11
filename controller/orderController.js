@@ -6,7 +6,7 @@ const { verifyToken } = require('../utils/VerifyToken');
 module.exports.addOrder = async (req, res) => {
      try {
           let {user,totalPrice, products ,contact , email  } = req.body;
-          console.log(req.body);
+          // console.log(req.body);
           
           
           let order = await orderModel.create({
