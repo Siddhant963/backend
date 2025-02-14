@@ -19,7 +19,7 @@ require('dotenv').config();
 
 app.use(cors());
 app.use(cors({ 
-    origin: process.env.CORS_ORIGIN , // Allow requests from your frontend
+    origin: 'https://frontend-twocups.onrender.com' , // Allow requests from your frontend
     methods: 'GET, POST, PUT, DELETE', // Specify allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true 
