@@ -7,7 +7,7 @@ require('dotenv').config();
 
 mongoose.connect(`${process.env.MONGODB_URI}`)
 .then(function(){ 
-     dugr("Database connected");
+     console.log("Database connected");
 })
 .catch(function(err){ 
   dugr(err);
