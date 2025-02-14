@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { genrateToken } = require("../utils/genrateToken");
 const { verifyToken } = require("../utils/VerifyToken");
-
+app.use(cookieParser());
 
 
 module.exports.registerUser =  async(req, res)=>{
@@ -54,7 +54,7 @@ module.exports.loginUser = async (req,res)=>{
           isadmin = user.isadmin;
           res.cookie("token", token, {
             httpOnly: true, // Prevents XSS attacks
-            secure: false,  // Use `true` in production (HTTPS)
+            secure: true,  // Use `true` in production (HTTPS)
             sameSite: "lax"
         });
 
