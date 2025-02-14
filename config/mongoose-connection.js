@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 require('dotenv').config();
 
 
-mongoose.connect(`${process.env.MONGODB_URI}`)
+mongoose.connect(`mongodb+srv://siddhantdubey867:swQeievR1JdUHcy7@cluster11.ws6sd.mongodb.net/Two_cups`)
 .then(function(){ 
      console.log("Database connected");
 })
