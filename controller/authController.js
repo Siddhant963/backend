@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { genrateToken } = require("../utils/genrateToken");
 const { verifyToken } = require("../utils/VerifyToken");
-app.use(cookieParser());
+
 
 
 module.exports.registerUser =  async(req, res)=>{
