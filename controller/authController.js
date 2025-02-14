@@ -52,7 +52,14 @@ module.exports.loginUser = async (req,res)=>{
           if(!isMatch) return res.status(400).send("Password is incorrect");
           let token = genrateToken(user);
           isadmin = user.isadmin;
-          res.cookie("token", token);
+          res.cookie("token", token, {
+            httpOnly: true, // Prevents XSS attacks
+            secure: false,  // Use `true` in production (HTTPS)
+            sameSite: "lax"
+        });
+
+        console.log("Token Set:", token);
+        console.log("Cookies After Setting:", req.cookies);
           console.log(req.cookies);
          res.status(200).json({msg: "login successfully" , token ,  isadmin});
      })
