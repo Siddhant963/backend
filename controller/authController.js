@@ -66,7 +66,9 @@ module.exports.loginUser = async (req,res)=>{
 
 module.exports.verifytoken = (req,res) =>{
      console.log("hii");
-     console.log(req.query);
+     let token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+     console.log("Received Cookies:", req.cookies);
+console.log("Received Headers:", req.headers);
      let {token} = req.query;
      console.log(req.cookies);
      if(!token) return res.status(401).send("Unauthorized");
