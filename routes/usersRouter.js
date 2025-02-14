@@ -14,7 +14,7 @@ router.post("/login"  , loginUser);
 
 router.get("/logout", logOut );
 
-router.get("/verifytoken", verifytoken );
+router.post("/verifytoken", verifytoken );
 
 router.get("/getprofile", getProfilebyEmail );
 
