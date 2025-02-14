@@ -2,6 +2,7 @@ const orderModel = require('../models/ordersSchema');
 const userModel = require('../models/usermodel');
 const productModel = require('../models/ProductSchema');
 const { verifyToken } = require('../utils/VerifyToken');
+const {sendMessage} = require('../utils/sendWhatsappmsg');
 
 module.exports.addOrder = async (req, res) => {
      try {
@@ -17,7 +18,7 @@ module.exports.addOrder = async (req, res) => {
                contact,
                email
           });
-          
+      const msg = sendMessage(order);
           res.send(order);
      
      }

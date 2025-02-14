@@ -11,15 +11,10 @@ const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
 require('dotenv').config();
-const {sendMessage} = require('./utils/sendWhatsappmsg');
-const orderDetails = 
-    {
-        "orderId": "12345",
-        "itemName": "iPhone 15",
-        "price": "999"
-      }
 
-sendMessage(orderDetails);
+
+
+
 
 
 app.use(cors());

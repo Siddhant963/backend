@@ -4,8 +4,11 @@ const axios = require('axios');
 const WHATSAPP_API_URL = `https://graph.facebook.com/v18.0/${process.env.WHATSAPP_PHONE_ID}/messages`;
 
 
-module.exports.sendMessage = async (orderDetails) => {
+module.exports.sendMessage = async (order) => {
+
     try {
+        const { _id, contact, products, totalPrice } = order;
+        const productNames = products.map((p) => p.productname).join(", ");
         const response = await axios.post(WHATSAPP_API_URL, {
             messaging_product: "whatsapp",
             to: process.env.RECIPIENT_PHONE,
@@ -17,9 +20,9 @@ module.exports.sendMessage = async (orderDetails) => {
                     {
                         type: "body",
                         parameters: [
-                            { type: "text", text: orderDetails.orderId },
-                            { type: "text", text: orderDetails.itemName },
-                            { type: "text", text: `$${orderDetails.price}` },
+                            { type: "text", text: productNames },
+                            { type: "text", text: contact },
+                            { type: "text", text: `Rs.${totalPrice}` },
                         ],
                     },
                 ],
