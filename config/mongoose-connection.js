@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 require('dotenv').config();
 
 
-mongoose.connect(`mongodb+srv://siddhantdubey867:swQeievR1JdUHcy7@cluster11.ws6sd.mongodb.net/Two_cups`)
+mongoose.connect(`mongodb+srv://siddhantdubey867:swQeievR1JdUHcy7@cluster11.ws6sd.mongodb.net/Two_cups?retryWrites=true&w=majority`)
 .then(function(){ 
      console.log("Database connected");
 })
