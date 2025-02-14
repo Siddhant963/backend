@@ -11,12 +11,7 @@ const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
 require('dotenv').config();
-
-
-
-
-
-
+app.use(cookieParser());
 app.use(cors());
 app.use(cors({ 
     origin: 'https://frontend-twocups.onrender.com' , // Allow requests from your frontend
@@ -24,7 +19,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true 
 }))
-app.use(cookieParser());
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
