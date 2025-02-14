@@ -65,7 +65,7 @@ module.exports.loginUser = async (req,res)=>{
 }
 
 module.exports.verifytoken = (req,res) =>{
-     onsole.log(hii);
+     console.log(hii);
      console.log(req.query);
      let {token} = req.query;
      console.log(req.cookies);
