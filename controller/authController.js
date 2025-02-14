@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { genrateToken } = require("../utils/genrateToken");
-const { verifyToken } = require("../utils/verifyToken");
+const { verifyToken } = require("../utils/VerifyToken");
 module.exports.registerUser =  async(req, res)=>{
      try {
           let { name, email, password, contact, address } = req.body;
