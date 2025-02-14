@@ -10,7 +10,7 @@ mongoose.connect(`mongodb+srv://siddhantdubey867:swQeievR1JdUHcy7@cluster11.ws6s
      console.log("Database connected");
 })
 .catch(function(err){ 
-  dugr(err);
+  console.log(err);
   
 })
 module.exports = mongoose.connection;
