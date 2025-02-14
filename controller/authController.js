@@ -58,15 +58,14 @@ module.exports.loginUser = async (req,res)=>{
             sameSite: "lax"
         });
 
-        console.log("Token Set:", token);
-        console.log("Cookies After Setting:", req.cookies);
-          console.log(req.cookies);
+       
          res.status(200).json({msg: "login successfully" , token ,  isadmin});
      })
 
 }
 
 module.exports.verifytoken = (req,res) =>{
+     onsole.log(hii);
      console.log(req.query);
      let {token} = req.query;
      console.log(req.cookies);
