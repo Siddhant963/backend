@@ -50,6 +50,7 @@ module.exports.loginUser = async (req,res)=>{
           let token = genrateToken(user);
           isadmin = user.isadmin;
           res.cookie("token", token);
+          console.log(req.cookies.token);
          res.status(200).json({msg: "login successfully" , token ,  isadmin});
      })
 
@@ -57,6 +58,7 @@ module.exports.loginUser = async (req,res)=>{
 
 module.exports.verifytoken = (req,res) =>{
      let token = req.cookies.token;
+     console.log(token);
      if(!token) return res.status(401).send("Unauthorized");
      const data =verifyToken(token);
    
