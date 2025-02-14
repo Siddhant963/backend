@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { genrateToken } = require("../utils/genrateToken");
 const { verifyToken } = require("../utils/VerifyToken");
+
+
+
 module.exports.registerUser =  async(req, res)=>{
      try {
           let { name, email, password, contact, address } = req.body;
@@ -50,7 +53,7 @@ module.exports.loginUser = async (req,res)=>{
           let token = genrateToken(user);
           isadmin = user.isadmin;
           res.cookie("token", token);
-          console.log(req.cookies.token);
+          console.log(req.cookies);
          res.status(200).json({msg: "login successfully" , token ,  isadmin});
      })
 
@@ -58,7 +61,7 @@ module.exports.loginUser = async (req,res)=>{
 
 module.exports.verifytoken = (req,res) =>{
      let token = req.cookies.token;
-     console.log(token);
+     console.log(req.cookies);
      if(!token) return res.status(401).send("Unauthorized");
      const data =verifyToken(token);
    
