@@ -7,7 +7,7 @@ const WHATSAPP_API_URL = `https://graph.facebook.com/v18.0/${process.env.WHATSAP
 module.exports.sendMessage = async (order) => {
 
     try {
-        const { _id, contact, products, totalPrice } = order;
+        const { _id, contact,email, products, totalPrice } = order;
         const productNames = products.map((p) => p.productname).join(", ");
         const response = await axios.post(WHATSAPP_API_URL, {
             messaging_product: "whatsapp",
@@ -20,9 +20,10 @@ module.exports.sendMessage = async (order) => {
                     {
                         type: "body",
                         parameters: [
+                             { type: "text", text: email },
                             { type: "text", text: productNames },
-                            { type: "text", text: contact },
                             { type: "text", text: `Rs.${totalPrice}` },
+                            { type: "text", text: contact },
                         ],
                     },
                 ],
