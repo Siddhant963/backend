@@ -51,15 +51,14 @@ module.exports.loginUser = async (req,res)=>{
           if(err) return res.status(500).send("Error");
           if(!isMatch) return res.status(400).send("Password is incorrect");
           let token = genrateToken(user);
+          email = user.email;
+          userID = user._id;
           isadmin = user.isadmin;
-          res.cookie("token", token, {
-            httpOnly: true, // Prevents XSS attacks
-            secure: true,  // Use `true` in production (HTTPS)
-            sameSite: "lax"
-        });
+          
+         
 
        
-         res.status(200).json({msg: "login successfully" , token ,  isadmin});
+         res.status(200).json({msg: "login successfully" , userID , email ,  isadmin});
      })
 
 }
