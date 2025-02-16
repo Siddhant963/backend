@@ -14,7 +14,7 @@ require('dotenv').config();
 app.use(cookieParser());
 app.use(cors());
 app.use(cors({ 
-    origin: 'https://frontend-twocups.onrender.com' , // Allow requests from your frontend
+    origin: 'https://www.twocupcafe.com' , // Allow requests from your frontend
     methods: 'GET, POST, PUT, DELETE', // Specify allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true 
